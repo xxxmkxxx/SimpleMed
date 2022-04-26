@@ -5,13 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Patient extends User {
-    private MedicalCard card;
-    private List<AdmissionRecord> records;
+public class AdmissionRecordModel {
+    private int recordId;
+    private Date timeOfReceipt;
+    private MedicalStaffModel medic;
+    private PatientModel patient;
 }

@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdmissionRecord {
-    private Date timeOfReceipt;
-    private MedicalStaff medic;
-    private Patient patient;
+public class MedicalCardModel {
+    private String cardId;
+    private String diseaseName;
+    private String description;
+    private String medicalComment;
+    private String conclusion;
 }

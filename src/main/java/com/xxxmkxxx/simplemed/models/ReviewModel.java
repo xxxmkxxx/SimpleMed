@@ -11,10 +11,10 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private long id;
-    private String name;
-    private String surname;
-    private String patronymic;
-    private Date dateOfBirth;
+public class ReviewModel {
+    private int reviewId;
+    private Date date;
+    private UserModel userSender;
+    private UserModel userRecipient;
+    private String textReview;
 }

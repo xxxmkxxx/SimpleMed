@@ -12,10 +12,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicalStaff extends User {
+public class MedicalStaffModel extends UserModel {
     private Professions profession;
-    private List<String> appointmentHours;
     private String description;
     private int experience;
-    private List<Review> reviews;
+    private List<ReviewModel> reviews;
 }
