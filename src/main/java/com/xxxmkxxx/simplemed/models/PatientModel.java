@@ -1,18 +1,21 @@
 package com.xxxmkxxx.simplemed.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name = "patient")
 public class PatientModel extends UserModel {
-    private int PatientId;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "patient")
     private MedicalCardModel card;
-    private List<AdmissionRecordModel> records;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+    private List<AdmissionRecordModel> admissionRecords;
 }

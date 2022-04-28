@@ -1,18 +1,26 @@
 package com.xxxmkxxx.simplemed.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name = "medical_cards")
 public class MedicalCardModel {
-    private String cardId;
-    private String diseaseName;
-    private String description;
-    private String medicalComment;
-    private String conclusion;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int cardId;
+
+    @OneToOne
+    @JoinColumn(name = "patient_id")
+    private PatientModel patient;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalCard")
+    private List<MedicalCardRecordModel> records;
 }
