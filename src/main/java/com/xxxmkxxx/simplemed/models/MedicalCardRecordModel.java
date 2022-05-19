@@ -6,8 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "medical_card_record")

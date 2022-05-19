@@ -7,11 +7,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "medical_cards")
+@Getter @Setter
+@NoArgsConstructor
 public class MedicalCardModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
