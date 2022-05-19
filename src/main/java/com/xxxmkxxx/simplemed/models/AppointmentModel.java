@@ -1,24 +1,27 @@
 package com.xxxmkxxx.simplemed.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "appointment_records")
-public class AppointmentRecordModel {
+@Table(name = "appointments")
+public class AppointmentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recordId;
 
-    @Column(name = "date_receipt")
-    private Date timeOfReceipt;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    @Temporal(TemporalType.TIME)
+    private Date time;
 
     @ManyToOne
     @JoinColumn(name = "medic_id")
