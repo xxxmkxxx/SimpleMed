@@ -11,8 +11,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "admission_records")
-public class AdmissionRecordModel {
+@Table(name = "appointment_records")
+public class AppointmentRecordModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recordId;
