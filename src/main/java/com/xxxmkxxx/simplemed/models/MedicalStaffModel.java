@@ -8,8 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "medical_staff")
@@ -24,5 +23,5 @@ public class MedicalStaffModel extends UserModel {
     private int experience;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "medic")
-    private List<AdmissionRecordModel> admissionRecords;
+    private List<AppointmentModel> admissionRecords;
 }

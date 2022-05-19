@@ -1,20 +1,17 @@
 package com.xxxmkxxx.simplemed.controllers;
 
-import com.xxxmkxxx.simplemed.repositories.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/")
+@RestController
+@RequestMapping("/test")
 @AllArgsConstructor
 public class MainPageController {
-    private UsersRepository repository;
-
-    @GetMapping("")
+    @GetMapping("/hello")
     public String mainPage() {
-        System.out.println(repository.getUserModelByUserId(1).getName());
-        return "startPage";
+        return "Привет!";
     }
 }

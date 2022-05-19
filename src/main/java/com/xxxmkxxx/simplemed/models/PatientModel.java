@@ -17,5 +17,5 @@ public class PatientModel extends UserModel {
     private MedicalCardModel card;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
-    private List<AdmissionRecordModel> admissionRecords;
+    private List<AppointmentModel> admissionRecords;
 }
