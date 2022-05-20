@@ -1,10 +1,10 @@
 package com.xxxmkxxx.simplemed.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -16,12 +16,8 @@ public class AppointmentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recordId;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    @Temporal(TemporalType.TIME)
-    private Date time;
+    private LocalDate date;
+    private LocalTime time;
 
     @ManyToOne
     @JoinColumn(name = "medic_id")
