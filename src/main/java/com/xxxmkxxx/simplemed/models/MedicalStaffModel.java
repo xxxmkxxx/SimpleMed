@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.List;
 
 @Getter @Setter
@@ -15,6 +16,12 @@ import java.util.List;
 public class MedicalStaffModel extends UserModel {
     @Enumerated(EnumType.STRING)
     private Professions profession;
+
+    @Column(name = "start_work_time")
+    LocalTime startWorkTime;
+
+    @Column(name = "end_work_time")
+    LocalTime endWorkTime;
 
     @Column(name = "description")
     private String description;
