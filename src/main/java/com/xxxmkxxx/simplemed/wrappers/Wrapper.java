@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common.wrappers;
+package com.xxxmkxxx.simplemed.wrappers;
 
 public interface Wrapper {
 

@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common.wrappers;
+package com.xxxmkxxx.simplemed.wrappers;
 
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
 import lombok.AllArgsConstructor;
@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter @Setter

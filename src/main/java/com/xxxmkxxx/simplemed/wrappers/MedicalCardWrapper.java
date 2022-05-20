@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common.wrappers;
+package com.xxxmkxxx.simplemed.wrappers;
 
 import com.xxxmkxxx.simplemed.models.MedicalCardModel;
 import com.xxxmkxxx.simplemed.models.MedicalCardRecordModel;

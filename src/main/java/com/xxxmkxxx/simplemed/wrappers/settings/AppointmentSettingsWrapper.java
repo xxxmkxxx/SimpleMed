@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common.wrappers.settings;
+package com.xxxmkxxx.simplemed.wrappers.settings;
 
 import com.xxxmkxxx.simplemed.configs.SMConfig;
 import lombok.Getter;

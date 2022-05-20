@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common.wrappers;
+package com.xxxmkxxx.simplemed.wrappers;
 
 import java.util.ArrayList;
 import java.util.List;

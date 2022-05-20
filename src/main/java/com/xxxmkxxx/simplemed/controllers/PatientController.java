@@ -1,9 +1,9 @@
 package com.xxxmkxxx.simplemed.controllers;
 
-import com.xxxmkxxx.simplemed.common.wrappers.*;
 import com.xxxmkxxx.simplemed.models.PatientModel;
 import com.xxxmkxxx.simplemed.services.PatientService;
-import lombok.*;
+import com.xxxmkxxx.simplemed.wrappers.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
