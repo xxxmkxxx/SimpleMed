@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,12 +20,12 @@ public class AppointmentsWrapper implements Wrapper {
     @AllArgsConstructor
     @NoArgsConstructor
     private class AppointmentRecordWrapper {
-        private Date date;
+        private LocalDateTime dateTime;
         private PublicUserInfoWrapper medic;
         private PublicUserInfoWrapper patient;
 
         public AppointmentRecordWrapper(AppointmentModel model) {
-            this.date = model.getDate();
+            this.dateTime = LocalDateTime.of(model.getDate(), model.getTime());
             this.medic = new PublicUserInfoWrapper(model.getMedic());
             this.patient = new PublicUserInfoWrapper(model.getPatient());
         }
