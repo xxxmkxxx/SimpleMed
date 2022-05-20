@@ -23,7 +23,9 @@ public record AppointmentsService(
         AppointmentRepository appointmentRepository
 ) {
     public Message safeAppointment(AppointmentModel appointment) {
-        if (!isCorrectTimeInterval(appointment.getTime())) {
+        if (!isWorkingTime(appointment.getTime(), appointment.getMedic())) {
+            return new Message("Невозможно сделать запись вне рабочего времени врача!", Message.MessageType.ERROR);
+        } else if (!isCorrectTimeInterval(appointment.getTime())) {
             return new Message("Невозможно сделать запись из-за некорректного интервала времени!", Message.MessageType.ERROR);
         } else if (!isAppointmentFree(appointment)) {
             return new Message("Невозможно записать несколько человек на одно и тоже время!", Message.MessageType.ERROR);
@@ -44,6 +46,10 @@ public record AppointmentsService(
 
     private boolean isCorrectTimeInterval(LocalTime time) {
         return time.getMinute() % SMConfig.APPOINTMENT_M_INTERVAL == 0;
+    }
+
+    private boolean isWorkingTime(LocalTime time, MedicalStaffModel medic) {
+        return time.isAfter(medic.getStartWorkTime()) && time.isBefore(medic.getEndWorkTime());
     }
 
     public List<AppointmentModel> getAppointmentsByDate(LocalDate date, MedicalStaffModel medic) {
