@@ -11,6 +11,6 @@ public class Message {
     private MessageType type;
 
     public enum MessageType {
-        MESSAGE, ERROR, WARNING;
+        MESSAGE, ERROR, WARNING, SUCCESS
     }
 }
