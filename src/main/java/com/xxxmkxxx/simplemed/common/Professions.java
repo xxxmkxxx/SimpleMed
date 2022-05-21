@@ -17,7 +17,7 @@ public enum Professions {
     @Getter
     private final String name;
 
-    public static String[] getProfessionNames() {
+    public static String[] getProfessionsNames() {
         List<String> names = new ArrayList<>();
 
         for (Professions profession : Professions.values()) {
@@ -25,5 +25,14 @@ public enum Professions {
         }
 
         return names.toArray(new String[Professions.values().length]);
+    }
+
+    public static Professions getProfessionByName(String name) {
+        for (Professions profession : Professions.values()) {
+            if (profession.getName().equals(name))
+                return profession;
+        }
+
+        return null;
     }
 }
