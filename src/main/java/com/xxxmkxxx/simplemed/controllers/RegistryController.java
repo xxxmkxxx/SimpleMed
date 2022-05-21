@@ -1,6 +1,7 @@
 package com.xxxmkxxx.simplemed.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
+import com.xxxmkxxx.simplemed.common.Professions;
 import com.xxxmkxxx.simplemed.wrappers.AppointmentsWrapper;
 import com.xxxmkxxx.simplemed.wrappers.settings.AppointmentSettingsWrapper;
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8081"})
@@ -30,7 +32,7 @@ public class RegistryController {
         return new ResponseEntity<>(new AppointmentSettingsWrapper(), HttpStatus.OK);
     }
 
-    @GetMapping("/appointment/all")
+    @GetMapping("/appointments")
     public ResponseEntity<AppointmentsWrapper> getAppointmentsByDate(
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
             @RequestParam(name = "medic") int medicId
@@ -44,18 +46,20 @@ public class RegistryController {
     @PostMapping("/appointment/create")
     public ResponseEntity<Message> createAppointment(
             @RequestParam(name = "patient") int patientId,
-            @RequestParam(name = "medic") int medicId,
+            @RequestParam(name = "medic", defaultValue = "0") int medicId,
+            @RequestParam(name = "profession", defaultValue = "none") String professionName,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime
     ) {
-        MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
+        Message message = new Message("none", Message.MessageType.ERROR);
         PatientModel patient = patientService.getPatient(patientId);
 
-        AppointmentModel appointment = AppointmentModel.builder()
-                .date(dateTime.toLocalDate()).time(dateTime.toLocalTime())
-                .medic(medic).patient(patient)
-                .build();
-
-        Message message = appointmentsService.safeAppointment(appointment);
+        if (!professionName.equals("none")) {
+            List<MedicalStaffModel> medics = medicalStaffService.getMedics(Professions.getProfessionByName(professionName));
+            message = appointmentsService.createAppointment(dateTime, medics, patient);
+        } else if (medicId != 0){
+            MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
+            message = appointmentsService.createAppointment(dateTime, medic, patient);
+        }
 
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
