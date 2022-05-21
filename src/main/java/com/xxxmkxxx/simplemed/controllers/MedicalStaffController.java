@@ -24,6 +24,6 @@ public class MedicalStaffController {
 
     @GetMapping("/professions")
     public ResponseEntity<String[]> getProfessions() {
-        return new ResponseEntity<>(Professions.getProfessionNames(), HttpStatus.OK);
+        return new ResponseEntity<>(Professions.getProfessionsNames(), HttpStatus.OK);
     }
 }
