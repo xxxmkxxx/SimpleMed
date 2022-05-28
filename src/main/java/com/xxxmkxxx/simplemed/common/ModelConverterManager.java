@@ -1,10 +1,10 @@
-package com.xxxmkxxx.simplemed.wrappers;
+package com.xxxmkxxx.simplemed.common;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WrapperManager<W, M> {
-    public List<W> convertModelList(List<M> models, WrapperConverter converter) {
+public class ConverterManager<W, M> {
+    public List<W> convertModelList(List<M> models, Converter converter) {
         List<W> wrappers = new ArrayList<>();
 
         for (M model : models) {
@@ -15,7 +15,7 @@ public class WrapperManager<W, M> {
     }
 
     @FunctionalInterface
-    public interface WrapperConverter<W, M> {
+    public interface Converter<W, M> {
         W convert(M model);
     }
 }

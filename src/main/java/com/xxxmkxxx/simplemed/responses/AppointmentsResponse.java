@@ -1,5 +1,6 @@
 package com.xxxmkxxx.simplemed.wrappers;
 
+import com.xxxmkxxx.simplemed.common.ModelConverterManager;
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +31,10 @@ public class AppointmentsWrapper implements Wrapper {
     }
 
     public AppointmentsWrapper(List<AppointmentModel> models) {
-        WrapperManager<AppointmentRecordWrapper, AppointmentModel> wrapperManager = new WrapperManager<>();
+        ModelConverterManager<AppointmentRecordWrapper, AppointmentModel> modelConverterManager = new ModelConverterManager<>();
 
         this.records =
-                wrapperManager.
+                modelConverterManager.
                         convertModelList(
                                 models,
                                 m -> new AppointmentRecordWrapper((AppointmentModel) m)
