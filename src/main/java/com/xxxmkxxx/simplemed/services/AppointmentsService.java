@@ -70,4 +70,8 @@ public record AppointmentsService(
         return appointmentRepository.getAllByDateAndMedic(date, medic);
     }
 
+    public List<AppointmentModel> getAppointmentsByWeek(LocalDate date, MedicalStaffModel medic) {
+        return appointmentRepository.getAllByDateBetweenAndMedic(date,date.plusDays(6), medic);
+    }
+
 }

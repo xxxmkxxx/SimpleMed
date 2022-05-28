@@ -14,5 +14,7 @@ public interface AppointmentRepository extends JpaRepository<AppointmentModel, I
     boolean existsAppointmentModelByDateAndTimeAndMedic(LocalDate date, LocalTime time, MedicalStaffModel medic);
 
     List<AppointmentModel> getAllByDateAndMedic(LocalDate date, MedicalStaffModel medic);
+
+    List<AppointmentModel> getAllByDateBetweenAndMedic(LocalDate dateStart, LocalDate dateStop, MedicalStaffModel medic);
 }
 

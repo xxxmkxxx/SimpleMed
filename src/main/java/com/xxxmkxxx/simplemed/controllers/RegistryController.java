@@ -2,9 +2,8 @@ package com.xxxmkxxx.simplemed.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.wrappers.AppointmentsWrapper;
+import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
 import com.xxxmkxxx.simplemed.wrappers.settings.AppointmentSettingsWrapper;
-import com.xxxmkxxx.simplemed.models.AppointmentModel;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.models.PatientModel;
 import com.xxxmkxxx.simplemed.services.AppointmentsService;
@@ -33,14 +32,21 @@ public class RegistryController {
     }
 
     @GetMapping("/appointments")
-    public ResponseEntity<AppointmentsWrapper> getAppointmentsByDate(
+    public ResponseEntity<AppointmentsResponse> getAppointments(
+            @RequestParam(name = "weekly") boolean isWeekly,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
             @RequestParam(name = "medic") int medicId
     ) {
+        AppointmentsResponse response;
         MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
-        AppointmentsWrapper wrapper = new AppointmentsWrapper(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
 
-        return new ResponseEntity<>(wrapper, HttpStatus.OK);
+        if (isWeekly) {
+            response = new AppointmentsResponse(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
+        } else {
+            response = new AppointmentsResponse(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
+        }
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/appointment/create")
