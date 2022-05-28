@@ -1,6 +1,7 @@
 package com.xxxmkxxx.simplemed.controllers;
 
 import com.xxxmkxxx.simplemed.models.PatientModel;
+import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
 import com.xxxmkxxx.simplemed.services.PatientService;
 import com.xxxmkxxx.simplemed.wrappers.*;
 import lombok.RequiredArgsConstructor;
@@ -37,9 +38,9 @@ public class PatientController {
     }
 
     @GetMapping("/appointments")
-    public ResponseEntity<AppointmentsWrapper> getAppointmentRecords(@PathVariable(name = "id") int patientId) {
+    public ResponseEntity<AppointmentsResponse> getAppointmentRecords(@PathVariable(name = "id") int patientId) {
         PatientModel patient = patientService.getPatient(patientId);
 
-        return new ResponseEntity<>(new AppointmentsWrapper(patient.getAdmissionRecords()), HttpStatus.OK);
+        return new ResponseEntity<>(new AppointmentsResponse(patient.getAdmissionRecords()), HttpStatus.OK);
     }
 }

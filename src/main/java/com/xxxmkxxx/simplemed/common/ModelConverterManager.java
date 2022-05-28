@@ -3,7 +3,7 @@ package com.xxxmkxxx.simplemed.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConverterManager<W, M> {
+public class ModelConverterManager<W, M> {
     public List<W> convertModelList(List<M> models, Converter converter) {
         List<W> wrappers = new ArrayList<>();
 

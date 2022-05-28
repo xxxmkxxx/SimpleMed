@@ -1,5 +1,6 @@
 package com.xxxmkxxx.simplemed.wrappers;
 
+import com.xxxmkxxx.simplemed.common.ModelConverterManager;
 import com.xxxmkxxx.simplemed.models.MedicalCardModel;
 import com.xxxmkxxx.simplemed.models.MedicalCardRecordModel;
 import lombok.AllArgsConstructor;
@@ -16,10 +17,10 @@ public class MedicalCardWrapper implements Wrapper {
     private List<MedicalCardRecordWrapper> cardRecords;
 
     public MedicalCardWrapper(MedicalCardModel model) {
-        WrapperManager<MedicalCardRecordWrapper, MedicalCardRecordModel> wrapperManager = new WrapperManager<>();
+        ModelConverterManager<MedicalCardRecordWrapper, MedicalCardRecordModel> modelConverterManager = new ModelConverterManager<>();
 
         this.cardRecords =
-                wrapperManager.
+                modelConverterManager.
                         convertModelList(
                                 model.getRecords(),
                                 m -> new MedicalCardRecordWrapper((MedicalCardRecordModel) m)
