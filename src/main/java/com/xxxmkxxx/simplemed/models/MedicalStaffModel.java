@@ -12,7 +12,6 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "medical_staff")
 public class MedicalStaffModel extends UserModel {
     @Enumerated(EnumType.STRING)
     private Professions profession;

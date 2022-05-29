@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "patient")
 public class PatientModel extends UserModel {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "patient")
     private MedicalCardModel card;
