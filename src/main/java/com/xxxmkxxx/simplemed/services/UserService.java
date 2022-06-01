@@ -1,8 +1,10 @@
 package com.xxxmkxxx.simplemed.services;
 
+import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.models.RoleModel;
 import com.xxxmkxxx.simplemed.models.UserModel;
 import com.xxxmkxxx.simplemed.repositories.UserRepository;
+import com.xxxmkxxx.simplemed.requests.CreateUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +33,35 @@ public class UserService implements UserDetailsService {
         }
 
         return new User(userModel.getLogin(), userModel.getPassword(), mapAuthority(userModel.getUserRoles()));
+    }
+
+    public Message createUser(CreateUserRequest userRequest) {
+        if (isUserExit(userRequest.getUserLogin(), userRequest.getUserMail())) {
+            return new Message("Пользователь с таким логином или почтой уже существует!", Message.MessageType.ERROR);
+        } else if (!isDataCorrect()) {
+            return new Message("Введённые данные некорректны!", Message.MessageType.ERROR);
+        }
+
+        UserModel user = UserModel.builder()
+                .login(userRequest.getUserLogin())
+                .password(userRequest.getUserPassword())
+                .mail(userRequest.getUserMail())
+                .dateOfBirth(userRequest.getUserDateOfBirth())
+                .name(userRequest.getUserName())
+                .surname(userRequest.getUserSurname())
+                .patronymic(userRequest.getUserPatronymic())
+                .phoneNumber(userRequest.getUserPhone())
+                .build();
+
+        return new Message("Вы успешно зарегистрированы!", Message.MessageType.SUCCESS);
+    }
+
+    private boolean isUserExit(String login, String mail) {
+        return false;
+    }
+
+    private boolean isDataCorrect() {
+        return true;
     }
 
     private List<GrantedAuthority> mapAuthority(List<RoleModel> roles) {

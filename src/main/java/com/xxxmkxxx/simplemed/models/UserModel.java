@@ -1,15 +1,16 @@
 package com.xxxmkxxx.simplemed.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+@Builder
 @Getter @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "users")
@@ -37,7 +38,7 @@ public class UserModel {
     private String patronymic;
 
     @Column(name = "dateOfBirth")
-    private Date dateOfBirth;
+    private LocalDateTime dateOfBirth;
 
     @Column(name = "phone")
     private String phoneNumber;
