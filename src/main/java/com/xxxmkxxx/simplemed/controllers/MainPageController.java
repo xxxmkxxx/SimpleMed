@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainPageController {
     @GetMapping("/")
     public String mainPage() {
-        return "Привет!";
+        return "hello world!";
     }
 }
