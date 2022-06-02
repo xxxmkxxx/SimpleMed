@@ -1,14 +1,14 @@
-package com.xxxmkxxx.simplemed.features.home.controllers;
+package com.xxxmkxxx.simplemed.features.index.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/")
+@RestController("/index")
 @AllArgsConstructor
-public class MainPageController {
-    @GetMapping("index")
-    public String mainPage() {
-        return "hello world!";
+public class IndexController {
+    @GetMapping("")
+    public String index() {
+        return "hello start page!";
     }
 }

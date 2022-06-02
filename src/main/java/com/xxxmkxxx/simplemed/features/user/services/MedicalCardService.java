@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.features.user.controllers;
+package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.models.MedicalCardModel;
 import com.xxxmkxxx.simplemed.models.PatientModel;
