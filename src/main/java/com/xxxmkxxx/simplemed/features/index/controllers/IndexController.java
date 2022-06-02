@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/")
 @AllArgsConstructor
 public class MainPageController {
-    @GetMapping("/")
+    @GetMapping("index")
     public String mainPage() {
         return "hello world!";
     }
