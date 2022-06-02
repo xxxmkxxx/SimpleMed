@@ -4,11 +4,13 @@ import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @RequiredArgsConstructor
@@ -16,10 +18,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserService userService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/patient/**").authenticated()
+                .antMatchers("/index").permitAll()
+                .antMatchers("/patient/card", "/get").hasAnyRole("USER", "STAFF", "SUPER_ADMIN")
+                .antMatchers("/patient/appointments").hasAnyRole("USER", "SUPER_ADMIN")
+                .antMatchers("/staff/get").hasAnyRole("USER", "STAFF", "SUPER_ADMIN")
+                .antMatchers("/registry/appointments").permitAll()
+                .antMatchers("/registry/appointment").hasAnyRole("USER", "STAFF", "SUPER_ADMIN")
                 .and()
                 .formLogin()
                 .and()
