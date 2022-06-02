@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.controllers;
+package com.xxxmkxxx.simplemed.features.registry.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.common.Professions;
@@ -6,9 +6,9 @@ import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
 import com.xxxmkxxx.simplemed.wrappers.settings.AppointmentSettingsWrapper;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.models.PatientModel;
-import com.xxxmkxxx.simplemed.services.AppointmentsService;
-import com.xxxmkxxx.simplemed.services.MedicalStaffService;
-import com.xxxmkxxx.simplemed.services.PatientService;
+import com.xxxmkxxx.simplemed.features.registry.services.AppointmentsService;
+import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
+import com.xxxmkxxx.simplemed.features.user.services.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

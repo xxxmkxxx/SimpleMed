@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.controllers;
+package com.xxxmkxxx.simplemed.features.home.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

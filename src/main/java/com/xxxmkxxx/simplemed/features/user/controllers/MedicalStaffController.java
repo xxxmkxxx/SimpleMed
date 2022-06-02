@@ -1,9 +1,9 @@
-package com.xxxmkxxx.simplemed.controllers;
+package com.xxxmkxxx.simplemed.features.user.controllers;
 
 import com.xxxmkxxx.simplemed.common.Professions;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.responses.BasicMedicInfoResponse;
-import com.xxxmkxxx.simplemed.services.MedicalStaffService;
+import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

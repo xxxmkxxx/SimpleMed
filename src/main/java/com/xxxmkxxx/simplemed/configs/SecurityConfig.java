@@ -1,6 +1,6 @@
 package com.xxxmkxxx.simplemed.configs;
 
-import com.xxxmkxxx.simplemed.services.UserService;
+import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

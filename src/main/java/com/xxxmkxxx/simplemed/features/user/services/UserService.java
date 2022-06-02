@@ -1,9 +1,9 @@
-package com.xxxmkxxx.simplemed.services;
+package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.models.RoleModel;
 import com.xxxmkxxx.simplemed.models.UserModel;
-import com.xxxmkxxx.simplemed.repositories.UserRepository;
+import com.xxxmkxxx.simplemed.features.user.repositories.UserRepository;
 import com.xxxmkxxx.simplemed.requests.CreateUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

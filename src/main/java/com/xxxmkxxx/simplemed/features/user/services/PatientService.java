@@ -1,7 +1,7 @@
-package com.xxxmkxxx.simplemed.services;
+package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.models.PatientModel;
-import com.xxxmkxxx.simplemed.repositories.PatientRepository;
+import com.xxxmkxxx.simplemed.features.user.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
 
 @Service

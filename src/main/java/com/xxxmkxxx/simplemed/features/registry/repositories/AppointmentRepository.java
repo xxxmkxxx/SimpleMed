@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.repositories;
+package com.xxxmkxxx.simplemed.features.registry.repositories;
 
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;

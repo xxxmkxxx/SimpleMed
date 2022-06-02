@@ -1,21 +1,16 @@
-package com.xxxmkxxx.simplemed.services;
+package com.xxxmkxxx.simplemed.features.registry.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.common.Professions;
 import com.xxxmkxxx.simplemed.configs.SMConfig;
+import com.xxxmkxxx.simplemed.features.registry.repositories.AppointmentRepository;
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.models.PatientModel;
-import com.xxxmkxxx.simplemed.repositories.AppointmentRepository;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZonedDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service

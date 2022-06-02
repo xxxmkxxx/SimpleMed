@@ -1,8 +1,8 @@
-package com.xxxmkxxx.simplemed.controllers;
+package com.xxxmkxxx.simplemed.features.user.controllers;
 
 import com.xxxmkxxx.simplemed.models.PatientModel;
 import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
-import com.xxxmkxxx.simplemed.services.PatientService;
+import com.xxxmkxxx.simplemed.features.user.services.PatientService;
 import com.xxxmkxxx.simplemed.wrappers.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

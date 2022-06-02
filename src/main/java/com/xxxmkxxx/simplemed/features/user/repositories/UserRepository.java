@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.repositories;
+package com.xxxmkxxx.simplemed.features.user.repositories;
 
 import com.xxxmkxxx.simplemed.models.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
