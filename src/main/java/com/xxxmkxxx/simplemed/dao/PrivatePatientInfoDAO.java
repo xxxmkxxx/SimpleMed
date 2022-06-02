@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.wrappers;
+package com.xxxmkxxx.simplemed.dao;
 
 import com.xxxmkxxx.simplemed.models.PatientModel;
 import lombok.AllArgsConstructor;
@@ -9,12 +9,12 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PrivatePatientInfoWrapper implements Wrapper {
+public class PrivatePatientInfoDAO implements DAO {
     private double height;
     private double weight;
     private String phoneNumber;
 
-    public PrivatePatientInfoWrapper(PatientModel model) {
+    public PrivatePatientInfoDAO(PatientModel model) {
         this.height = 0;
         this.weight = 0;
         this.phoneNumber = model.getDateOfBirth().toString();

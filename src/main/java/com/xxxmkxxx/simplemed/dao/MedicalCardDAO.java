@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.wrappers;
+package com.xxxmkxxx.simplemed.dao;
 
 import com.xxxmkxxx.simplemed.common.ModelConverterManager;
 import com.xxxmkxxx.simplemed.models.MedicalCardModel;
@@ -13,30 +13,30 @@ import java.util.List;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicalCardWrapper implements Wrapper {
-    private List<MedicalCardRecordWrapper> cardRecords;
+public class MedicalCardDAO implements DAO {
+    private List<MedicalCardRecordDAO> cardRecords;
 
-    public MedicalCardWrapper(MedicalCardModel model) {
-        ModelConverterManager<MedicalCardRecordWrapper, MedicalCardRecordModel> modelConverterManager = new ModelConverterManager<>();
+    public MedicalCardDAO(MedicalCardModel model) {
+        ModelConverterManager<MedicalCardRecordDAO, MedicalCardRecordModel> modelConverterManager = new ModelConverterManager<>();
 
         this.cardRecords =
                 modelConverterManager.
                         convertModelList(
                                 model.getRecords(),
-                                m -> new MedicalCardRecordWrapper((MedicalCardRecordModel) m)
+                                m -> new MedicalCardRecordDAO((MedicalCardRecordModel) m)
                         );
     }
 
     @Getter @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class MedicalCardRecordWrapper implements Wrapper {
+    private static class MedicalCardRecordDAO implements DAO {
         private String diseaseName;
         private String description;
         private String medicalComment;
         private String conclusion;
 
-        public MedicalCardRecordWrapper(MedicalCardRecordModel model) {
+        public MedicalCardRecordDAO(MedicalCardRecordModel model) {
             this.diseaseName = model.getDiseaseName();
             this.description = model.getDescription();
             this.medicalComment = model.getMedicalComment();

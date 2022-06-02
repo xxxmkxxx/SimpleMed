@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.user.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.requests.CreateUserRequest;
+import com.xxxmkxxx.simplemed.dao.CreateUserDAO;
 import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Message> register(@RequestBody CreateUserRequest createUserRequest) {
-        Message message = userService.createUser(createUserRequest);
+    public ResponseEntity<Message> register(@RequestBody CreateUserDAO createUserDAO) {
+        Message message = userService.createUser(createUserDAO);
 
         return new ResponseEntity<>(message, HttpStatus.OK);
     }

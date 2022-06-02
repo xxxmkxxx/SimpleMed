@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.wrappers;
+package com.xxxmkxxx.simplemed.dao;
 
 import com.xxxmkxxx.simplemed.models.UserModel;
 import lombok.AllArgsConstructor;
@@ -9,12 +9,12 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PublicUserInfoWrapper implements Wrapper {
+public class PublicUserInfoDAO implements DAO {
     private String name;
     private String surname;
     private String patronymic;
 
-    public PublicUserInfoWrapper(UserModel model) {
+    public PublicUserInfoDAO(UserModel model) {
         this.name = model.getName();
         this.surname = model.getSurname();
         this.patronymic = model.getPatronymic();

@@ -2,8 +2,8 @@ package com.xxxmkxxx.simplemed.features.registry.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
-import com.xxxmkxxx.simplemed.wrappers.settings.AppointmentSettingsWrapper;
+import com.xxxmkxxx.simplemed.dao.AppointmentsDAO;
+import com.xxxmkxxx.simplemed.dao.AppointmentSettingsDAO;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.models.PatientModel;
 import com.xxxmkxxx.simplemed.features.registry.services.AppointmentsService;
@@ -27,23 +27,23 @@ public class RegistryController {
     private final PatientService patientService;
     private final MedicalStaffService medicalStaffService;
     @GetMapping("/")
-    public ResponseEntity<AppointmentSettingsWrapper> getInterval() {
-        return new ResponseEntity<>(new AppointmentSettingsWrapper(), HttpStatus.OK);
+    public ResponseEntity<AppointmentSettingsDAO> getInterval() {
+        return new ResponseEntity<>(new AppointmentSettingsDAO(), HttpStatus.OK);
     }
 
     @GetMapping("/appointments")
-    public ResponseEntity<AppointmentsResponse> getAppointments(
+    public ResponseEntity<AppointmentsDAO> getAppointments(
             @RequestParam(name = "weekly") boolean isWeekly,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
             @RequestParam(name = "medic") int medicId
     ) {
-        AppointmentsResponse response;
+        AppointmentsDAO response;
         MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
 
         if (isWeekly) {
-            response = new AppointmentsResponse(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
+            response = new AppointmentsDAO(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
         } else {
-            response = new AppointmentsResponse(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
+            response = new AppointmentsDAO(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);

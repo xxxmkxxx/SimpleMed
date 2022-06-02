@@ -1,9 +1,8 @@
-package com.xxxmkxxx.simplemed.responses;
+package com.xxxmkxxx.simplemed.dao;
 
 import com.xxxmkxxx.simplemed.common.AppointmentStatusType;
 import com.xxxmkxxx.simplemed.common.ModelConverterManager;
 import com.xxxmkxxx.simplemed.models.AppointmentModel;
-import com.xxxmkxxx.simplemed.wrappers.PublicUserInfoWrapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,34 +13,34 @@ import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
-public class AppointmentsResponse implements Response {
-    private List<AppointmentRecordResponse> records;
+public class AppointmentsDAO implements DAO {
+    private List<AppointmentRecordDAO> records;
 
     @Getter @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    private class AppointmentRecordResponse {
+    private class AppointmentRecordDAO {
         private AppointmentStatusType appointmentStatus;
         private LocalDateTime dateTime;
-        private PublicUserInfoWrapper medic;
-        private PublicUserInfoWrapper patient;
+        private PublicUserInfoDAO medic;
+        private PublicUserInfoDAO patient;
 
-        public AppointmentRecordResponse(AppointmentModel model) {
+        public AppointmentRecordDAO(AppointmentModel model) {
             this.appointmentStatus = model.getAppointmentStatus();
             this.dateTime = LocalDateTime.of(model.getDate(), model.getTime());
-            this.medic = new PublicUserInfoWrapper(model.getMedic());
-            this.patient = new PublicUserInfoWrapper(model.getPatient());
+            this.medic = new PublicUserInfoDAO(model.getMedic());
+            this.patient = new PublicUserInfoDAO(model.getPatient());
         }
     }
 
-    public AppointmentsResponse(List<AppointmentModel> models) {
-        ModelConverterManager<AppointmentRecordResponse, AppointmentModel> modelConverterManager = new ModelConverterManager<>();
+    public AppointmentsDAO(List<AppointmentModel> models) {
+        ModelConverterManager<AppointmentRecordDAO, AppointmentModel> modelConverterManager = new ModelConverterManager<>();
 
         this.records =
                 modelConverterManager.
                         convertModelList(
                                 models,
-                                m -> new AppointmentRecordResponse((AppointmentModel) m)
+                                m -> new AppointmentRecordDAO((AppointmentModel) m)
                         );
     }
 }

@@ -1,6 +1,6 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!.mvn/DAO/maven-DAO.jar
 .mvn
 mvnw
 mvnw.cmd

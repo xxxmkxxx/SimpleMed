@@ -1,9 +1,8 @@
 package com.xxxmkxxx.simplemed.features.user.controllers;
 
+import com.xxxmkxxx.simplemed.dao.*;
 import com.xxxmkxxx.simplemed.models.PatientModel;
-import com.xxxmkxxx.simplemed.responses.AppointmentsResponse;
 import com.xxxmkxxx.simplemed.features.user.services.PatientService;
-import com.xxxmkxxx.simplemed.wrappers.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,30 +16,30 @@ public class PatientController {
     private final PatientService patientService;
 
     @GetMapping("/info")
-    public ResponseEntity<Wrapper> getPatientInfo(@PathVariable(name = "id") int patientId, @RequestParam(name = "private") Boolean isPrivateInfo) {
+    public ResponseEntity<DAO> getPatientInfo(@PathVariable(name = "id") int patientId, @RequestParam(name = "private") Boolean isPrivateInfo) {
         PatientModel patient = patientService.getPatient(patientId);
-        Wrapper wrapper;
+        DAO DAO;
 
         if (isPrivateInfo) {
-            wrapper = new PrivatePatientInfoWrapper(patient);
+            DAO = new PrivatePatientInfoDAO(patient);
         } else {
-            wrapper = new PublicUserInfoWrapper(patient);
+            DAO = new PublicUserInfoDAO(patient);
         }
 
-        return new ResponseEntity<>(wrapper, HttpStatus.OK);
+        return new ResponseEntity<>(DAO, HttpStatus.OK);
     }
 
     @GetMapping("/card")
-    public ResponseEntity<MedicalCardWrapper> getPatientCard(@PathVariable(name = "id") int patientId) {
+    public ResponseEntity<MedicalCardDAO> getPatientCard(@PathVariable(name = "id") int patientId) {
         PatientModel patient = patientService.getPatient(patientId);
 
-        return new ResponseEntity<>(new MedicalCardWrapper(patient.getCard()), HttpStatus.OK);
+        return new ResponseEntity<>(new MedicalCardDAO(patient.getCard()), HttpStatus.OK);
     }
 
     @GetMapping("/appointments")
-    public ResponseEntity<AppointmentsResponse> getAppointmentRecords(@PathVariable(name = "id") int patientId) {
+    public ResponseEntity<AppointmentsDAO> getAppointmentRecords(@PathVariable(name = "id") int patientId) {
         PatientModel patient = patientService.getPatient(patientId);
 
-        return new ResponseEntity<>(new AppointmentsResponse(patient.getAdmissionRecords()), HttpStatus.OK);
+        return new ResponseEntity<>(new AppointmentsDAO(patient.getAdmissionRecords()), HttpStatus.OK);
     }
 }

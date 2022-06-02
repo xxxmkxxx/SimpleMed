@@ -2,7 +2,7 @@ package com.xxxmkxxx.simplemed.features.user.controllers;
 
 import com.xxxmkxxx.simplemed.common.Professions;
 import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
-import com.xxxmkxxx.simplemed.responses.BasicMedicInfoResponse;
+import com.xxxmkxxx.simplemed.dao.BasicMedicInfoDAO;
 import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,10 +19,10 @@ public class MedicalStaffController {
     private final MedicalStaffService medicalStaffService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<BasicMedicInfoResponse> getMedicInfo(@PathVariable int id) {
+    public ResponseEntity<BasicMedicInfoDAO> getMedicInfo(@PathVariable int id) {
         MedicalStaffModel medic = medicalStaffService.getMedic(id);
 
-        return new ResponseEntity<>(new BasicMedicInfoResponse(medic), HttpStatus.OK);
+        return new ResponseEntity<>(new BasicMedicInfoDAO(medic), HttpStatus.OK);
     }
 
     @GetMapping("/professions")

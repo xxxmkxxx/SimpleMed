@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.requests;
+package com.xxxmkxxx.simplemed.dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 @AllArgsConstructor
-public class CreateUserRequest {
+public class CreateUserDAO implements DAO {
     private String userLogin;
     private String userPassword;
     private String userMail;
