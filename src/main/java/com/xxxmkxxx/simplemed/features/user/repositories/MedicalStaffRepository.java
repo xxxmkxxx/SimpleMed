@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface MedicalStaffRepository extends JpaRepository<MedicalStaffModel, Integer> {
     MedicalStaffModel getMedicalStaffModelByUserId(int id);
+    MedicalStaffModel getMedicalStaffModelByLogin(String login);
     List<MedicalStaffModel> getAllByProfession(Professions profession);
 }
