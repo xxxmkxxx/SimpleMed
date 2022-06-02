@@ -7,10 +7,7 @@ import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/staff")
@@ -18,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedicalStaffController {
     private final MedicalStaffService medicalStaffService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BasicMedicInfoDAO> getMedicInfo(@PathVariable int id) {
-        MedicalStaffModel medic = medicalStaffService.getMedic(id);
+    @GetMapping("/get")
+    public ResponseEntity<BasicMedicInfoDAO> getMedicInfo(@RequestParam(name = "medic") String medicLogin) {
+        MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
 
         return new ResponseEntity<>(new BasicMedicInfoDAO(medic), HttpStatus.OK);
     }

@@ -35,10 +35,10 @@ public class RegistryController {
     public ResponseEntity<AppointmentsDAO> getAppointments(
             @RequestParam(name = "weekly") boolean isWeekly,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
-            @RequestParam(name = "medic") int medicId
+            @RequestParam(name = "medic") String medicLogin
     ) {
         AppointmentsDAO response;
-        MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
+        MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
 
         if (isWeekly) {
             response = new AppointmentsDAO(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
@@ -49,21 +49,21 @@ public class RegistryController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/appointment/create")
+    @PostMapping("/appointment")
     public ResponseEntity<Message> createAppointment(
-            @RequestParam(name = "patient") int patientId,
-            @RequestParam(name = "medic", defaultValue = "0") int medicId,
+            @RequestParam(name = "patient") String patientLogin,
+            @RequestParam(name = "medic") String medicLogin,
             @RequestParam(name = "profession", defaultValue = "none") String professionName,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime
     ) {
         Message message = new Message("none", Message.MessageType.ERROR);
-        PatientModel patient = patientService.getPatient(patientId);
+        PatientModel patient = patientService.getPatient(patientLogin);
 
         if (!professionName.equals("none")) {
             List<MedicalStaffModel> medics = medicalStaffService.getMedics(Professions.getProfessionByName(professionName));
             message = appointmentsService.createAppointment(dateTime, medics, patient);
-        } else if (medicId != 0){
-            MedicalStaffModel medic = medicalStaffService.getMedic(medicId);
+        } else if (!medicLogin.equals("none")){
+            MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
             message = appointmentsService.createAppointment(dateTime, medic, patient);
         }
 
