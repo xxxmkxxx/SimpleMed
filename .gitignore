@@ -7,6 +7,8 @@ mvnw.cmd
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+mysql-docker/
+
 ### STS ###
 .apt_generated
 .classpath
@@ -21,20 +23,3 @@ mvnw.cmd
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-
-node_modules
-
-queriesDB.sql
