@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.registry.models;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

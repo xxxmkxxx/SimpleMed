@@ -1,6 +1,7 @@
-package com.xxxmkxxx.simplemed.dao;
+package com.xxxmkxxx.simplemed.features.user.dto;
 
-import com.xxxmkxxx.simplemed.models.UserModel;
+import com.xxxmkxxx.simplemed.common.DTO;
+import com.xxxmkxxx.simplemed.features.user.models.UserModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,12 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PublicUserInfoDAO implements DAO {
+public class PublicUserInfoDTO implements DTO {
     private String name;
     private String surname;
     private String patronymic;
 
-    public PublicUserInfoDAO(UserModel model) {
+    public PublicUserInfoDTO(UserModel model) {
         this.name = model.getName();
         this.surname = model.getSurname();
         this.patronymic = model.getPatronymic();

@@ -1,7 +1,9 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.registry.models;
 
 import com.xxxmkxxx.simplemed.common.AppointmentStatusType;
 import com.xxxmkxxx.simplemed.common.PatientStatusType;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenerationTime;

@@ -3,9 +3,9 @@ package com.xxxmkxxx.simplemed.features.registry.services;
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.configs.SMConfig;
 import com.xxxmkxxx.simplemed.features.registry.repositories.AppointmentRepository;
-import com.xxxmkxxx.simplemed.models.AppointmentModel;
-import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
-import com.xxxmkxxx.simplemed.models.PatientModel;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

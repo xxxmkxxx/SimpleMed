@@ -1,8 +1,9 @@
-package com.xxxmkxxx.simplemed.dao;
+package com.xxxmkxxx.simplemed.features.registry.dto;
 
+import com.xxxmkxxx.simplemed.common.DTO;
 import com.xxxmkxxx.simplemed.common.ModelConverterManager;
-import com.xxxmkxxx.simplemed.models.MedicalCardModel;
-import com.xxxmkxxx.simplemed.models.MedicalCardRecordModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardRecordModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,30 +14,30 @@ import java.util.List;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicalCardDAO implements DAO {
-    private List<MedicalCardRecordDAO> cardRecords;
+public class MedicalCardDTO implements DTO {
+    private List<MedicalCardRecordDTO> cardRecords;
 
-    public MedicalCardDAO(MedicalCardModel model) {
-        ModelConverterManager<MedicalCardRecordDAO, MedicalCardRecordModel> modelConverterManager = new ModelConverterManager<>();
+    public MedicalCardDTO(MedicalCardModel model) {
+        ModelConverterManager<MedicalCardRecordDTO, MedicalCardRecordModel> modelConverterManager = new ModelConverterManager<>();
 
         this.cardRecords =
                 modelConverterManager.
                         convertModelList(
                                 model.getRecords(),
-                                m -> new MedicalCardRecordDAO((MedicalCardRecordModel) m)
+                                m -> new MedicalCardRecordDTO((MedicalCardRecordModel) m)
                         );
     }
 
     @Getter @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class MedicalCardRecordDAO implements DAO {
+    private static class MedicalCardRecordDTO implements DTO {
         private String diseaseName;
         private String description;
         private String medicalComment;
         private String conclusion;
 
-        public MedicalCardRecordDAO(MedicalCardRecordModel model) {
+        public MedicalCardRecordDTO(MedicalCardRecordModel model) {
             this.diseaseName = model.getDiseaseName();
             this.description = model.getDescription();
             this.medicalComment = model.getMedicalComment();

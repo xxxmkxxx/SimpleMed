@@ -2,10 +2,10 @@ package com.xxxmkxxx.simplemed.features.registry.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.dao.AppointmentsDAO;
-import com.xxxmkxxx.simplemed.dao.AppointmentSettingsDAO;
-import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
-import com.xxxmkxxx.simplemed.models.PatientModel;
+import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentsDTO;
+import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentSettingsDAO;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import com.xxxmkxxx.simplemed.features.registry.services.AppointmentsService;
 import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
 import com.xxxmkxxx.simplemed.features.user.services.PatientService;
@@ -32,18 +32,18 @@ public class RegistryController {
     }
 
     @GetMapping("/appointments")
-    public ResponseEntity<AppointmentsDAO> getAppointments(
+    public ResponseEntity<AppointmentsDTO> getAppointments(
             @RequestParam(name = "weekly") boolean isWeekly,
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
             @RequestParam(name = "medic") String medicLogin
     ) {
-        AppointmentsDAO response;
+        AppointmentsDTO response;
         MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
 
         if (isWeekly) {
-            response = new AppointmentsDAO(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
+            response = new AppointmentsDTO(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
         } else {
-            response = new AppointmentsDAO(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
+            response = new AppointmentsDTO(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);

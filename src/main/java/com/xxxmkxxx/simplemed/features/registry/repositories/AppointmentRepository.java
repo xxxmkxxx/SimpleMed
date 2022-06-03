@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.registry.repositories;
 
-import com.xxxmkxxx.simplemed.models.AppointmentModel;
-import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

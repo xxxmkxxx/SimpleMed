@@ -1,10 +1,10 @@
 package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.models.RoleModel;
-import com.xxxmkxxx.simplemed.models.UserModel;
+import com.xxxmkxxx.simplemed.features.security.models.RoleModel;
+import com.xxxmkxxx.simplemed.features.user.models.UserModel;
 import com.xxxmkxxx.simplemed.features.user.repositories.UserRepository;
-import com.xxxmkxxx.simplemed.dao.CreateUserDAO;
+import com.xxxmkxxx.simplemed.features.user.dto.CreateUserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,7 +35,7 @@ public class UserService implements UserDetailsService {
         return new User(userModel.getLogin(), userModel.getPassword(), mapAuthority(userModel.getUserRoles()));
     }
 
-    public Message createUser(CreateUserDAO userRequest) {
+    public Message createUser(CreateUserDTO userRequest) {
         if (isUserExit(userRequest.getUserLogin(), userRequest.getUserMail())) {
             return new Message("Пользователь с таким логином или почтой уже существует!", Message.MessageType.ERROR);
         } else if (!isDataCorrect()) {

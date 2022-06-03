@@ -1,5 +1,7 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.user.models;
 
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.user.repositories;
 
 import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,6 +1,7 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.security.models;
 
 import com.xxxmkxxx.simplemed.common.Roles;
+import com.xxxmkxxx.simplemed.features.user.models.UserModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

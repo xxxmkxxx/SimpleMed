@@ -1,10 +1,11 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.user.models;
 
+import com.xxxmkxxx.simplemed.features.security.models.RoleModel;
+import com.xxxmkxxx.simplemed.features.social.models.ReviewModel;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Builder

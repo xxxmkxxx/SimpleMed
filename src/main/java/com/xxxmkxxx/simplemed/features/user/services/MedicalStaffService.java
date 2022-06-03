@@ -1,9 +1,8 @@
 package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.models.MedicalStaffModel;
+import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.repositories.MedicalStaffRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

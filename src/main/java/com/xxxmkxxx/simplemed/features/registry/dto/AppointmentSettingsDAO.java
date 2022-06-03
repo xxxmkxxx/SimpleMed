@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.dao;
+package com.xxxmkxxx.simplemed.features.registry.dto;
 
 import com.xxxmkxxx.simplemed.configs.SMConfig;
 import lombok.Getter;

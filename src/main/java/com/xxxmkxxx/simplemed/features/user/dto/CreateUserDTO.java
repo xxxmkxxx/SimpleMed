@@ -1,5 +1,6 @@
-package com.xxxmkxxx.simplemed.dao;
+package com.xxxmkxxx.simplemed.features.user.dto;
 
+import com.xxxmkxxx.simplemed.common.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 @AllArgsConstructor
-public class CreateUserDAO implements DAO {
+public class CreateUserDTO implements DTO {
     private String userLogin;
     private String userPassword;
     private String userMail;

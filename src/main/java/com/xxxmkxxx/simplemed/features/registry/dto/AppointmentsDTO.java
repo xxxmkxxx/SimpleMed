@@ -1,8 +1,10 @@
-package com.xxxmkxxx.simplemed.dao;
+package com.xxxmkxxx.simplemed.features.registry.dto;
 
 import com.xxxmkxxx.simplemed.common.AppointmentStatusType;
+import com.xxxmkxxx.simplemed.common.DTO;
 import com.xxxmkxxx.simplemed.common.ModelConverterManager;
-import com.xxxmkxxx.simplemed.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.user.dto.PublicUserInfoDTO;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor
-public class AppointmentsDAO implements DAO {
+public class AppointmentsDTO implements DTO {
     private List<AppointmentRecordDAO> records;
 
     @Getter @Setter
@@ -22,18 +24,18 @@ public class AppointmentsDAO implements DAO {
     private class AppointmentRecordDAO {
         private AppointmentStatusType appointmentStatus;
         private LocalDateTime dateTime;
-        private PublicUserInfoDAO medic;
-        private PublicUserInfoDAO patient;
+        private PublicUserInfoDTO medic;
+        private PublicUserInfoDTO patient;
 
         public AppointmentRecordDAO(AppointmentModel model) {
             this.appointmentStatus = model.getAppointmentStatus();
             this.dateTime = LocalDateTime.of(model.getDate(), model.getTime());
-            this.medic = new PublicUserInfoDAO(model.getMedic());
-            this.patient = new PublicUserInfoDAO(model.getPatient());
+            this.medic = new PublicUserInfoDTO(model.getMedic());
+            this.patient = new PublicUserInfoDTO(model.getPatient());
         }
     }
 
-    public AppointmentsDAO(List<AppointmentModel> models) {
+    public AppointmentsDTO(List<AppointmentModel> models) {
         ModelConverterManager<AppointmentRecordDAO, AppointmentModel> modelConverterManager = new ModelConverterManager<>();
 
         this.records =

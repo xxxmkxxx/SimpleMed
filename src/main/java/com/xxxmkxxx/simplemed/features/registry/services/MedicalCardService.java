@@ -1,7 +1,7 @@
-package com.xxxmkxxx.simplemed.features.user.services;
+package com.xxxmkxxx.simplemed.features.registry.services;
 
-import com.xxxmkxxx.simplemed.models.MedicalCardModel;
-import com.xxxmkxxx.simplemed.models.PatientModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardModel;
+import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,5 +1,6 @@
-package com.xxxmkxxx.simplemed.models;
+package com.xxxmkxxx.simplemed.features.registry.models;
 
+import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
