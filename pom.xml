@@ -120,4 +120,9 @@
         </plugins>
     </build>
 
+<!--debug-->
+<!--    https://youtrack.jetbrains.com/issue/IDEA-188058-->
+<!--    https://stackoverflow.com/questions/51260688/unable-to-open-debugger-port-for-spring-boot-debug-with-intellijidea-->
+<!--    1) mvn spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"     -->
+<!--    2) Remote JVM Debug (debug)-->
 </project>
