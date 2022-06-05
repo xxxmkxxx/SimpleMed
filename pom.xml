@@ -107,22 +107,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <environmentVariables>
-                        <DATASOURCE_HOST>localhost</DATASOURCE_HOST>
-                        <DATASOURCE_PORT>3306</DATASOURCE_PORT>
-                        <MYSQL_DATABASE>simple_med</MYSQL_DATABASE>
-                        <MYSQL_USER>root</MYSQL_USER>
-                        <MYSQL_ROOT_PASSWORD>1237894560q++Q</MYSQL_ROOT_PASSWORD>
-                    </environmentVariables>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
-<!--debug-->
-<!--    https://youtrack.jetbrains.com/issue/IDEA-188058-->
-<!--    https://stackoverflow.com/questions/51260688/unable-to-open-debugger-port-for-spring-boot-debug-with-intellijidea-->
-<!--    1) mvn spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"     -->
-<!--    2) Remote JVM Debug (debug)-->
 </project>
