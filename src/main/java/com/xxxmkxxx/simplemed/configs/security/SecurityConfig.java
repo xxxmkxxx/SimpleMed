@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.configs;
+package com.xxxmkxxx.simplemed.configs.security;
 
 import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
