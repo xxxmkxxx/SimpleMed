@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.configs;
+package com.xxxmkxxx.simplemed.configs.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
