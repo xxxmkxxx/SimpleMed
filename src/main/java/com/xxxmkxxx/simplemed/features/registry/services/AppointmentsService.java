@@ -1,9 +1,8 @@
 package com.xxxmkxxx.simplemed.features.registry.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.configs.SMConfig;
-import com.xxxmkxxx.simplemed.features.registry.repositories.AppointmentRepository;
 import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.registry.repositories.AppointmentRepository;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import org.springframework.stereotype.Service;
@@ -54,7 +53,7 @@ public record AppointmentsService(
     }
 
     private boolean isCorrectTimeInterval(LocalTime time) {
-        return time.getMinute() % SMConfig.APPOINTMENT_M_INTERVAL == 0;
+        return time.getMinute() % 15 == 0;
     }
 
     private boolean isWorkingTime(LocalTime time, MedicalStaffModel medic) {
