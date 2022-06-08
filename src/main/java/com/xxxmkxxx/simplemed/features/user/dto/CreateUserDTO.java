@@ -1,15 +1,13 @@
 package com.xxxmkxxx.simplemed.features.user.dto;
 
-import com.xxxmkxxx.simplemed.common.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Getter
 @AllArgsConstructor
-public class CreateUserDTO implements DTO {
+public class CreateUserDTO {
     private String userLogin;
     private String userPassword;
     private String userMail;

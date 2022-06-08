@@ -1,8 +1,10 @@
 package com.xxxmkxxx.simplemed.features.user.controllers;
 
 import com.xxxmkxxx.simplemed.common.Professions;
+import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
+import com.xxxmkxxx.simplemed.features.mapper.converters.BasicMedicalStaffInfoConverter;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
-import com.xxxmkxxx.simplemed.features.user.dto.BasicMedicInfoDTO;
+import com.xxxmkxxx.simplemed.features.user.dto.BasicMedicalStaffInfoDTO;
 import com.xxxmkxxx.simplemed.features.user.services.MedicalStaffService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,10 +18,11 @@ public class MedicalStaffController {
     private final MedicalStaffService medicalStaffService;
 
     @GetMapping("/get")
-    public ResponseEntity<BasicMedicInfoDTO> getMedicInfo(@RequestParam(name = "medic") String medicLogin) {
+    public ResponseEntity<BasicMedicalStaffInfoDTO> getMedicInfo(@RequestParam(name = "medic") String medicLogin) {
         MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
+        ModelConverterManager<BasicMedicalStaffInfoDTO> converterManager = new ModelConverterManager<>(new BasicMedicalStaffInfoConverter(medic));
 
-        return new ResponseEntity<>(new BasicMedicInfoDTO(medic), HttpStatus.OK);
+        return new ResponseEntity<>(converterManager.createDTO(), HttpStatus.OK);
     }
 
     @GetMapping("/professions")

@@ -2,8 +2,11 @@ package com.xxxmkxxx.simplemed.features.registry.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
 import com.xxxmkxxx.simplemed.common.Professions;
+import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
+import com.xxxmkxxx.simplemed.features.mapper.converters.AppointmentsConverter;
+import com.xxxmkxxx.simplemed.features.mapper.converters.MedicalCardConverter;
 import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentsDTO;
-import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentSettingsDAO;
+import com.xxxmkxxx.simplemed.features.registry.dto.MedicalCardDTO;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import com.xxxmkxxx.simplemed.features.registry.services.AppointmentsService;
@@ -26,10 +29,6 @@ public class RegistryController {
     private final AppointmentsService appointmentsService;
     private final PatientService patientService;
     private final MedicalStaffService medicalStaffService;
-    @GetMapping("/")
-    public ResponseEntity<AppointmentSettingsDAO> getInterval() {
-        return new ResponseEntity<>(new AppointmentSettingsDAO(), HttpStatus.OK);
-    }
 
     @GetMapping("/appointments")
     public ResponseEntity<AppointmentsDTO> getAppointments(
@@ -37,16 +36,20 @@ public class RegistryController {
             @RequestParam(name = "date") @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm") LocalDateTime dateTime,
             @RequestParam(name = "medic") String medicLogin
     ) {
-        AppointmentsDTO response;
         MedicalStaffModel medic = medicalStaffService.getMedic(medicLogin);
+        ModelConverterManager<AppointmentsDTO> converterManager;
 
         if (isWeekly) {
-            response = new AppointmentsDTO(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic));
+            converterManager = new ModelConverterManager<>(
+                    new AppointmentsConverter(appointmentsService.getAppointmentsByWeek(dateTime.toLocalDate(), medic))
+            );
         } else {
-            response = new AppointmentsDTO(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic));
+            converterManager = new ModelConverterManager<>(
+                    new AppointmentsConverter(appointmentsService.getAppointmentsByDate(dateTime.toLocalDate(), medic))
+            );
         }
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(converterManager.createDTO(), HttpStatus.OK);
     }
 
     @PostMapping("/appointment")

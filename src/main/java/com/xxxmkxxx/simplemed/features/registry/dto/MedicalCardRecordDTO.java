@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.List;
-
 @Builder
 @Getter
 @AllArgsConstructor
-public class AppointmentsDTO {
-    private List<AppointmentRecordDTO> records;
+public class MedicalCardRecordDTO {
+    private String diseaseName;
+    private String description;
+    private String medicalComment;
+    private String conclusion;
 }
