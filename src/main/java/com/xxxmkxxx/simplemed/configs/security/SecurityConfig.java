@@ -2,6 +2,7 @@ package com.xxxmkxxx.simplemed.configs.security;
 
 import com.xxxmkxxx.simplemed.configs.security.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import com.xxxmkxxx.simplemed.configs.security.jwt.JwtVerifierFilter;
+import com.xxxmkxxx.simplemed.features.user.services.UserCredenceService;
 import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserService userService;
+    private final UserCredenceService userCredenceService;
     @Value("${jwt.secret}")
     private String secret;
 
@@ -53,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService(userService);
+        daoAuthenticationProvider.setUserDetailsService(userCredenceService);
 
         return daoAuthenticationProvider;
     }
