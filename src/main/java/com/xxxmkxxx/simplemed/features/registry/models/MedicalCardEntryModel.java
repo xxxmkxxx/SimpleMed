@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class MedicalCardRecordModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String recordId;
+    private String cardRecordId;
 
     @ManyToOne
     @JoinColumn(name = "card_id")

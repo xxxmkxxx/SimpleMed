@@ -17,11 +17,11 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "appointments")
+@Table(name = "appointment_records")
 public class AppointmentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int recordId;
+    private int appointmentId;
 
     @Column(name = "date")
     private LocalDate date;
@@ -37,7 +37,7 @@ public class AppointmentModel {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "patient_status")
-    @ColumnDefault(value = "NONE")
+    @ColumnDefault(value = "'NONE'")
     @org.hibernate.annotations.Generated(GenerationTime.INSERT)
     private PatientStatusType patientStatus = PatientStatusType.NONE;
 
