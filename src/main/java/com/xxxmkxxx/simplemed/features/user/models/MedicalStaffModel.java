@@ -1,7 +1,8 @@
 package com.xxxmkxxx.simplemed.features.user.models;
 
-import com.xxxmkxxx.simplemed.common.Professions;
-import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.user.common.Professions;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentEntryModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,9 +12,15 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Getter @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class MedicalStaffModel extends UserModel {
+@Table(name = "staff")
+public class MedicalStaffModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int medicalStaffId;
+
     @Enumerated(EnumType.STRING)
     private Professions profession;
 
@@ -29,6 +36,9 @@ public class MedicalStaffModel extends UserModel {
     @Column(name = "experience")
     private int experience;
 
+    @OneToOne
+    private UserModel user;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "medic")
-    private List<AppointmentModel> admissionRecords;
+    private List<AppointmentEntryModel> admissionRecords;
 }

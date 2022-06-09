@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.registry.models;
 
-import com.xxxmkxxx.simplemed.common.AppointmentStatusType;
-import com.xxxmkxxx.simplemed.common.PatientStatusType;
+import com.xxxmkxxx.simplemed.features.registry.common.AppointmentStatusType;
+import com.xxxmkxxx.simplemed.features.registry.common.PatientStatusType;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import lombok.*;
@@ -17,11 +17,11 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "appointment_records")
-public class AppointmentModel {
+@Table(name = "appointment_entry")
+public class AppointmentEntryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int appointmentId;
+    private int appointmentEntryId;
 
     @Column(name = "date")
     private LocalDate date;

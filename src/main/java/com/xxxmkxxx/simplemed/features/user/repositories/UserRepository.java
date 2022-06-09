@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Integer> {
-    UserModel getUserModelByLogin(String userName);
+    UserModel getUserModelByCredence_Login(String userName);
 }

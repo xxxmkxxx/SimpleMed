@@ -1,12 +1,10 @@
 package com.xxxmkxxx.simplemed.features.registry.controllers;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.common.Professions;
+import com.xxxmkxxx.simplemed.features.user.common.Professions;
 import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
 import com.xxxmkxxx.simplemed.features.mapper.converters.AppointmentsConverter;
-import com.xxxmkxxx.simplemed.features.mapper.converters.MedicalCardConverter;
 import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentsDTO;
-import com.xxxmkxxx.simplemed.features.registry.dto.MedicalCardDTO;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
 import com.xxxmkxxx.simplemed.features.registry.services.AppointmentsService;

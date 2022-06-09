@@ -1,4 +1,4 @@
-package com.xxxmkxxx.simplemed.common;
+package com.xxxmkxxx.simplemed.features.user.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

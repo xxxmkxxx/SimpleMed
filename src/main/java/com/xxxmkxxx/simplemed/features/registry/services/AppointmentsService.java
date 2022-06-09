@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.registry.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentEntryModel;
 import com.xxxmkxxx.simplemed.features.registry.repositories.AppointmentRepository;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
@@ -13,9 +13,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Service
-public record AppointmentsService(
-        AppointmentRepository appointmentRepository
-) {
+public record AppointmentsService(AppointmentRepository appointmentRepository) {
     public Message createAppointment(LocalDateTime dateTime, MedicalStaffModel medic, PatientModel patient) {
         if (!isWorkingTime(dateTime.toLocalTime(), medic)) {
             return new Message("Невозможно сделать запись вне рабочего времени врача!", Message.MessageType.ERROR);
@@ -25,7 +23,7 @@ public record AppointmentsService(
             return new Message("Невозможно записать несколько человек на одно и тоже время к одному врачу!", Message.MessageType.ERROR);
         }
 
-        AppointmentModel appointment = AppointmentModel.builder()
+        AppointmentEntryModel appointment = AppointmentEntryModel.builder()
                         .patient(patient).medic(medic)
                         .date(dateTime.toLocalDate()).time(dateTime.toLocalTime())
                         .build();
@@ -60,11 +58,11 @@ public record AppointmentsService(
         return time.isAfter(medic.getStartWorkTime()) && time.isBefore(medic.getEndWorkTime());
     }
 
-    public List<AppointmentModel> getAppointmentsByDate(LocalDate date, MedicalStaffModel medic) {
+    public List<AppointmentEntryModel> getAppointmentsByDate(LocalDate date, MedicalStaffModel medic) {
         return appointmentRepository.getAllByDateAndMedic(date, medic);
     }
 
-    public List<AppointmentModel> getAppointmentsByWeek(LocalDate date, MedicalStaffModel medic) {
+    public List<AppointmentEntryModel> getAppointmentsByWeek(LocalDate date, MedicalStaffModel medic) {
         return appointmentRepository.getAllByDateBetweenAndMedic(date,date.plusDays(6), medic);
     }
 

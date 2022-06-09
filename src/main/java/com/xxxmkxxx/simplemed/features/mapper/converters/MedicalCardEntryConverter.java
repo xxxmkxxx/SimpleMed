@@ -1,9 +1,9 @@
 package com.xxxmkxxx.simplemed.features.mapper.converters;
 
 import com.xxxmkxxx.simplemed.features.registry.dto.MedicalCardRecordDTO;
-import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardRecordModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardEntryModel;
 
-public record MedicalCardRecordConverter(MedicalCardRecordModel medicalCardRecord) implements Converter<MedicalCardRecordDTO> {
+public record MedicalCardEntryConverter(MedicalCardEntryModel medicalCardRecord) implements Converter<MedicalCardRecordDTO> {
     @Override
     public MedicalCardRecordDTO convert() {
         return MedicalCardRecordDTO.builder()

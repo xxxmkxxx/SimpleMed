@@ -6,11 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public record PatientService(PatientRepository patientRepository) {
-    public PatientModel getPatient(int patientId) {
-        return patientRepository.getPatientModelByUserId(patientId);
-    }
-
     public PatientModel getPatient(String patientLogin) {
-        return patientRepository.getPatientModelByLogin(patientLogin);
+        return patientRepository.getPatientModelByUser_Credence_Login(patientLogin);
     }
 }

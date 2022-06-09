@@ -3,12 +3,12 @@ package com.xxxmkxxx.simplemed.features.mapper.converters;
 import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
 import com.xxxmkxxx.simplemed.features.registry.dto.MedicalCardDTO;
 import com.xxxmkxxx.simplemed.features.registry.dto.MedicalCardRecordDTO;
-import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardRecordModel;
+import com.xxxmkxxx.simplemed.features.registry.models.MedicalCardEntryModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record MedicalCardConverter(List<MedicalCardRecordModel> records) implements Converter<MedicalCardDTO> {
+public record MedicalCardConverter(List<MedicalCardEntryModel> records) implements Converter<MedicalCardDTO> {
     @Override
     public MedicalCardDTO convert() {
         return MedicalCardDTO.builder()
@@ -19,9 +19,9 @@ public record MedicalCardConverter(List<MedicalCardRecordModel> records) impleme
     private List<MedicalCardRecordDTO> convertList() {
         List<MedicalCardRecordDTO> dtoRecords = new ArrayList<>();
 
-        for (MedicalCardRecordModel record : records) {
+        for (MedicalCardEntryModel record : records) {
             dtoRecords.add(
-                    new ModelConverterManager<>(new MedicalCardRecordConverter(record)).createDTO()
+                    new ModelConverterManager<>(new MedicalCardEntryConverter(record)).createDTO()
             );
         }
 

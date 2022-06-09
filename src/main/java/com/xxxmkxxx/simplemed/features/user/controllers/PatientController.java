@@ -11,7 +11,9 @@ import com.xxxmkxxx.simplemed.features.user.dto.BasicMedicalStaffInfoDTO;
 import com.xxxmkxxx.simplemed.features.user.dto.BasicUserInfoDTO;
 import com.xxxmkxxx.simplemed.features.user.dto.PrivatePatientInfoDTO;
 import com.xxxmkxxx.simplemed.features.user.models.PatientModel;
+import com.xxxmkxxx.simplemed.features.user.models.UserModel;
 import com.xxxmkxxx.simplemed.features.user.services.PatientService;
+import com.xxxmkxxx.simplemed.features.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +25,12 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class PatientController {
     private final PatientService patientService;
+    private final UserService userService;
 
     @GetMapping("/get")
     public ResponseEntity<BasicUserInfoDTO> getPatientInfo(@RequestParam(name = "login") String patientLogin, @RequestParam(name = "private") Boolean isPrivateInfo) {
-        PatientModel patient = patientService.getPatient(patientLogin);
-        ModelConverterManager<BasicUserInfoDTO> converterManager = new ModelConverterManager<>(new BasicUserInfoConverter(patient));
+        UserModel userModel = userService.getUserByLogin(patientLogin);
+        ModelConverterManager<BasicUserInfoDTO> converterManager = new ModelConverterManager<>(new BasicUserInfoConverter(userModel));
 
         return new ResponseEntity<>(converterManager.createDTO(), HttpStatus.OK);
     }

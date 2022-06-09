@@ -3,12 +3,12 @@ package com.xxxmkxxx.simplemed.features.mapper.converters;
 import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
 import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentRecordDTO;
 import com.xxxmkxxx.simplemed.features.registry.dto.AppointmentsDTO;
-import com.xxxmkxxx.simplemed.features.registry.models.AppointmentModel;
+import com.xxxmkxxx.simplemed.features.registry.models.AppointmentEntryModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record AppointmentsConverter(List<AppointmentModel> appointments) implements Converter<AppointmentsDTO> {
+public record AppointmentsConverter(List<AppointmentEntryModel> appointments) implements Converter<AppointmentsDTO> {
     @Override
     public AppointmentsDTO convert() {
         return AppointmentsDTO.builder()
@@ -19,9 +19,9 @@ public record AppointmentsConverter(List<AppointmentModel> appointments) impleme
     private List<AppointmentRecordDTO> convertList() {
         List<AppointmentRecordDTO> appointmentDTOList = new ArrayList<>();
 
-        for (AppointmentModel appointment : appointments) {
+        for (AppointmentEntryModel appointment : appointments) {
             appointmentDTOList.add(
-                    new ModelConverterManager<>(new AppointmentRecordConverter(appointment)).createDTO()
+                    new ModelConverterManager<>(new AppointmentEntryConverter(appointment)).createDTO()
             );
         }
 

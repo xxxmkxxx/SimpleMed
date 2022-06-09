@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Getter @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "medical_card_record")
-public class MedicalCardRecordModel {
+@Table(name = "medical_card_entry")
+public class MedicalCardEntryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String cardRecordId;
+    private int medicalCardEntryId;
 
     @ManyToOne
     @JoinColumn(name = "card_id")

@@ -1,6 +1,6 @@
 package com.xxxmkxxx.simplemed.features.user.controllers;
 
-import com.xxxmkxxx.simplemed.common.Professions;
+import com.xxxmkxxx.simplemed.features.user.common.Professions;
 import com.xxxmkxxx.simplemed.features.mapper.ModelConverterManager;
 import com.xxxmkxxx.simplemed.features.mapper.converters.BasicMedicalStaffInfoConverter;
 import com.xxxmkxxx.simplemed.features.user.models.MedicalStaffModel;

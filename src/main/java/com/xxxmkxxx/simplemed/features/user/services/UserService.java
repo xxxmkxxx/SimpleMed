@@ -1,38 +1,15 @@
 package com.xxxmkxxx.simplemed.features.user.services;
 
 import com.xxxmkxxx.simplemed.common.Message;
-import com.xxxmkxxx.simplemed.features.security.models.RoleModel;
+import com.xxxmkxxx.simplemed.features.user.dto.CreateUserDTO;
 import com.xxxmkxxx.simplemed.features.user.models.UserModel;
 import com.xxxmkxxx.simplemed.features.user.repositories.UserRepository;
-import com.xxxmkxxx.simplemed.features.user.dto.CreateUserDTO;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
-public class UserService implements UserDetailsService {
-    private final UserRepository userRepository;
-
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserModel userModel = userRepository.getUserModelByLogin(username);
-
-        if(userModel == null) {
-            throw new UsernameNotFoundException("Not found user with username: " + username);
-        }
-
-        return new User(userModel.getLogin(), userModel.getPassword(), mapAuthority(userModel.getUserRoles()));
+public record UserService(UserRepository userRepository) {
+    public UserModel getUserByLogin(String login) {
+        return userRepository.getUserModelByCredence_Login(login);
     }
 
     public Message createUser(CreateUserDTO userRequest) {
@@ -41,17 +18,6 @@ public class UserService implements UserDetailsService {
         } else if (!isDataCorrect()) {
             return new Message("Введённые данные некорректны!", Message.MessageType.ERROR);
         }
-
-        UserModel user = UserModel.builder()
-                .login(userRequest.getUserLogin())
-                .password(userRequest.getUserPassword())
-                .mail(userRequest.getUserMail())
-                .dateOfBirth(userRequest.getUserDateOfBirth())
-                .name(userRequest.getUserName())
-                .surname(userRequest.getUserSurname())
-                .patronymic(userRequest.getUserPatronymic())
-                .phoneNumber(userRequest.getUserPhone())
-                .build();
 
         return new Message("Вы успешно зарегистрированы!", Message.MessageType.SUCCESS);
     }
@@ -62,9 +28,5 @@ public class UserService implements UserDetailsService {
 
     private boolean isDataCorrect() {
         return true;
-    }
-
-    private List<GrantedAuthority> mapAuthority(List<RoleModel> roles) {
-        return roles.stream().map(roleModel -> new SimpleGrantedAuthority(roleModel.getRole().name())).collect(Collectors.toList());
     }
 }

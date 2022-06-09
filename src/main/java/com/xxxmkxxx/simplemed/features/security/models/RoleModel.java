@@ -1,7 +1,7 @@
 package com.xxxmkxxx.simplemed.features.security.models;
 
-import com.xxxmkxxx.simplemed.common.Roles;
-import com.xxxmkxxx.simplemed.features.user.models.UserModel;
+import com.xxxmkxxx.simplemed.features.security.common.Roles;
+import com.xxxmkxxx.simplemed.features.user.models.UserCredenceModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,5 +23,5 @@ public class RoleModel {
     private Roles role;
 
     @ManyToMany(mappedBy = "userRoles")
-    private List<UserModel> users;
+    private List<UserCredenceModel> users;
 }

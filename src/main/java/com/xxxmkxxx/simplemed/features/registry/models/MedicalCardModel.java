@@ -22,5 +22,5 @@ public class MedicalCardModel {
     private PatientModel patient;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalCard")
-    private List<MedicalCardRecordModel> records;
+    private List<MedicalCardEntryModel> records;
 }

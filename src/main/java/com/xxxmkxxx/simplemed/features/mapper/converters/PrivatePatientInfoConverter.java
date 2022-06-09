@@ -7,9 +7,9 @@ public record PrivatePatientInfoConverter(PatientModel patient) implements Conve
     @Override
     public PrivatePatientInfoDTO convert() {
         return PrivatePatientInfoDTO.builder()
-                .phoneNumber(patient.getPhoneNumber())
-                .height(0)
-                .weight(0)
+                .phoneNumber(patient.getUser().getCredence().getPhoneNumber())
+                .height(patient.getHeight())
+                .weight(patient().getWeight())
                 .build();
     }
 }
